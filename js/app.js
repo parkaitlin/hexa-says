@@ -1,17 +1,8 @@
 console.log('linked')
-// test
-array = [];
 
 // music starts immediately
 
-
-document.querySelector('.hexagons').addEventListener('click', (e)=>{
-    console.log(e.target.id); // test to find value of target
-    array.push(e.target.id); 
-    document.getElementById(e.target.id).style.backgroundColor='blue'
-    console.log(array);
-})
-
+// FUNCTIONS
 const countdown = ()=>{
     document.getElementsByClassName('.overlay').style
     // hide start screen (display to none)
@@ -39,9 +30,47 @@ i++
 },2000)
 }
 
+const checkForMatch = ()=>{
+for(let i = 0; i < game.player.array.length; i++){
+if(game.player.array[i] !== game.hexArray[i]){
+    console.log('WRONG!')
+    game.startGame = false;
+    game.hexArray = []
+//some animation indicating its wrong
+// game over overlay display swiched to flex
+//maybe blur the background too
+} else if(game.player.array.length === game.hexArray.length && game.player.array[i] === game.hexArray[i]){
+// some animation indicating the next round
+if(game.round < 2){
+    console.log('Move on to next round')
+    game.player.array = [];
+    game.round += 1;
+// startNextRound() <--- delay for animation like 5s
+} else if(game.round = 2){
+    console.log('YOU WIN!')
+}
+} else if(game.player.array[i] === game.hexArray[i]){
+console.log('NICE!')
+}
+}
+}
+
+//GAME
+document.querySelector('.hexagons').addEventListener('click', (e)=>{
+if(e.target.id !== ''){
+    game.player.array.push(e.target.id); 
+    document.getElementById(e.target.id).style.backgroundColor='aqua'
+    setTimeout(()=>{
+        document.getElementById(e.target.id).style.backgroundColor='green'
+    }, 1500)
+}
+checkForMatch();
+console.log(game.player.array); // test 
+})
+
 const startFirstRound = ()=>{
 for(let i = 1; i < 5; i++){
-    let randomNum = Math.floor(Math.random() * 6 + 1);
+    let randomNum = Math.floor(Math.random() * 14 + 1);
     game.hexArray.push(`hex${randomNum}`);
     console.log(game.hexArray); // test 
 }
@@ -49,14 +78,14 @@ playSequence();
 }
 
 const startNextRound = ()=>{
-
+//if game.round = (last round) call player.win() function)
 }
 
 const initiateGame = ()=>{
     game.startGame = true;
     game.player = new Player;
     game.round = 1
-    countdown();
+    // countdown();
 }
 
 const game = {
@@ -64,7 +93,6 @@ const game = {
     gameInit: initiateGame,
     player:{},
     hexArray: [],
-    playerArray: [],
     round: 0
 }
 
