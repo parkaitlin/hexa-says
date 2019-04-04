@@ -2,11 +2,43 @@ console.log('linked')
 
 array = [];
 
-document.querySelector('.hexagon').addEventListener('click', (e)=>{
+document.querySelector('.hexagons').addEventListener('click', (e)=>{
     console.log(e.target.id);
     array.push(e.target.id)
     console.log(array);
 })
+
+const countdown = ()=>{
+    document.getElementsByClassName('.overlay').style
+    // hide start screen
+    // countdown 3-2-1
+    // 2s pause
+    // start music
+}
+
+const startRoundOne = ()=>{
+
+}
+
+const startNextRound = ()=>{
+
+}
+
+const initiateGame = ()=>{
+    game.startGame = true;
+    game.player = new Player;
+    game.round = 1
+    countdown();
+}
+
+const game = {
+    startGame: false,
+    gameInit: initiateGame,
+    player:{},
+    hexArray: [],
+    playerArray: [],
+    round: 0
+}
 // initiateGame function
     // startGame = true
     // player = new Player
@@ -20,7 +52,7 @@ document.querySelector('.hexagon').addEventListener('click', (e)=>{
     //playerArray: []
 
 // countdown function
-    //set interval/set timeout?
+    //
     // start background music
 
 // event listener for start button <-- background should be blurred
