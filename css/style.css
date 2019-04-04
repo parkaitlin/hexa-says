@@ -1,0 +1,19 @@
+/* 1. look into absolute for overlay div
+2. research how to make divs into hexagon
+
+cool stuff: DO LAST 
+    note about headphones ajust for diff size screen
+    include music
+    background
+    3D hexagons
+    hexagons that flip */
+
+.hexagons {
+    display: flex;
+}
+.hexagon {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    margin: 10px;
+}
