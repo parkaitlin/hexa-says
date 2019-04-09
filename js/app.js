@@ -24,14 +24,14 @@ setTimeout(()=>{
     const lightUpRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
     const lightOffRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
     
-    lightUpLeft.style.borderRight = "30px solid pink";
-    lightUpMid.style.backgroundColor = "pink";
-    lightUpRight.style.borderLeft = "30px solid pink";
+    lightUpLeft.style.borderRight = "30px solid rgba(206,186,199,1)";
+    lightUpMid.style.backgroundColor = "rgba(206,186,199,1)";
+    lightUpRight.style.borderLeft = "30px solid rgba(206,186,199,1)";
 
     setTimeout(()=>{
-    lightOffLeft.style.borderRight = "30px solid #ffffff";
-    lightOffMid.style.backgroundColor = "#ffffff"
-    lightOffRight.style.borderLeft = "30px solid #ffffff"
+    lightOffLeft.style.borderRight = "30px solid rgba(206,186,199,0.5)";
+    lightOffMid.style.backgroundColor = "rgba(206,186,199,0.5)"
+    lightOffRight.style.borderLeft = "30px solid rgba(206,186,199,0.5)"
 }, 500); 
 if(i === game.hexArray.length - 1){
     i = 0;
@@ -44,12 +44,12 @@ i++
 }
 
 const playerTurn = ()=>{
-for(let i = game.hexArray.length * 1500; i < game.hexArray.length * 1500 + 1; i++){
+for(let i = game.hexArray.length * 1300; i < game.hexArray.length * 1300 + 1; i++){
 setTimeout(()=>{
     document.getElementById('your-turn').style.display="flex";
 setTimeout(()=>{
     document.getElementById('your-turn').style.display="none";
-}, 700);
+}, 900);
 }, i)
 }
 }
@@ -93,21 +93,17 @@ setTimeout(()=>{
     document.getElementById('round-num').style.display="flex";
 setTimeout(()=>{
     document.getElementById('round-num').style.display="none";
-}, 2500);
-}, 1500);
+}, 2000);
+}, 800);
 }
 
 const addHexagon = ()=>{
 let i = game.platform.length + 1;
 if(i <= 14){
-setTimeout(()=>{
-document.querySelector(`#hex${i}`).style.display="flex";
 game.platform.push(`hex${i}`);
 setTimeout(()=>{
     document.querySelector(`div#hex${i}.newHexagon`).classList.toggle('is-flipped');
-}, 1000)
-}, 5000);
-console.log(i);
+}, 1800);
 }
 }
 
@@ -130,7 +126,7 @@ for(let i = 1; i < 2; i++){
 setTimeout(()=>{
     playSequence();
     playerTurn();
-}, 6500);
+}, 2800);
 }
 
 //Game
@@ -160,13 +156,13 @@ const game = {
 document.querySelector('.flowers').addEventListener('click', (e)=>{
 if(e.target.id !== ''){
 game.player.array.push(e.target.id); 
-document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='30px solid aqua'
-document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='aqua'
-document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft='30px solid aqua'
+document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='30px solid rgba(206,186,199,1)'
+document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='rgba(206,186,199,1)'
+document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft='30px solid rgba(206,186,199,1)'
 setTimeout(()=>{
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight="30px solid #ffffff"
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='#ffffff'
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft="30px solid #ffffff"
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight="30px solid rgba(206,186,199,0.6)"
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='rgba(206,186,199,0.6)'
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft="30px solid rgba(206,186,199,0.6)"
 }, 500)
 }
 checkForMatch();

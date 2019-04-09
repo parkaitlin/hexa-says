@@ -1,12 +1,4 @@
-/* 1. look into absolute for overlay div
-2. research how to make divs into hexagon
 
-    cool stuff: DO LAST 
-    note about headphones ajust for diff size screen
-    include music
-    background
-    3D hexagons
-    hexagons that flip */
 
 
 body {
@@ -16,7 +8,6 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
 }
 
 .first-overlay {
@@ -100,12 +91,13 @@ button {
     margin-right: 15px;
     animation: flip 2s ease;
     animation-iteration-count: 20;
+    filter: drop-shadow(0 0 20px #fff);
 }
 
 .left0 {
     width: 0;
     height: 0;
-    border-right: 30px solid #6c6;
+    border-right: 30px solid rgba(206,186,199,0.6);
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
 }
@@ -113,7 +105,7 @@ button {
 .right0 {
     width: 0;
     height: 0;
-    border-left: 30px solid #6c6;
+    border-left: 30px solid rgba(206,186,199,0.6);
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
 }
@@ -121,7 +113,7 @@ button {
 .middle0 {
     width: 60px;
     height: 104px;
-    background-color: #6c6;
+    background-color: rgba(206,186,199,0.6);
 }
 
 .scene {
@@ -195,8 +187,6 @@ button {
     transform: rotateY(180deg);
 }
 
-
-
 /* each hexagon is made up of 3divs */
 .left-front {
     width: 0;
@@ -205,7 +195,6 @@ button {
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
 }
-
 .right-front {
     width: 0;
     height: 0;
@@ -213,7 +202,6 @@ button {
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
 }
-
 .middle-front {
     width: 60px;
     height: 104px;
@@ -223,34 +211,29 @@ button {
 .left-back {
     width: 0;
     height: 0;
-    border-right: 30px solid #ffffff;
+    border-right: 30px solid rgba(206,186,199,0.6);
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
 
 }
-
 .right-back {
     width: 0;
     height: 0;
-    border-left: 30px solid #ffffff;
+    border-left: 30px solid rgba(206,186,199,0.6);
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
 
 }
-
 .middle-back {
     width: 60px;
     height: 104px;
-    background-color: #ffffff;
+    background-color: rgba(206,186,199,0.6);
 }
-/* hexagon done */
 
-/* hexagon flower - 7 hexagons in 3 columns (2-3-2) */
 .flowerOne {
     display: flex;
     margin: 150px 0;
 }
-
 .flowerTwo {
     display: flex;
     margin-top: 210px;
@@ -263,7 +246,6 @@ button {
     flex-direction: column;
     margin-right: -25px;
 }
-
 .even-col {
     display: flex;
     flex-direction: column;
@@ -315,17 +297,17 @@ button {
 figure {
 display: hidden;
 }
-/* Used Keyframes */
 
+/* Used Keyframes */
 @keyframes fadeOutUp {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-        transform: translate3d(0, -100%, 0);
-    }
-    }
+from {
+    opacity: 1;
+}
+to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+}
+}
 
 @keyframes bounce {
 from,
@@ -336,109 +318,116 @@ to {
     animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transform: translate3d(0, 0, 0);
 }
-
 40%,
 43% {
     animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     transform: translate3d(0, -30px, 0);
 }
-
 70% {
     animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     transform: translate3d(0, -15px, 0);
 }
-
 90% {
     transform: translate3d(0, -4px, 0);
 }
 }
 
-
 @keyframes shake {
-    from,
-    to {
-      transform: translate3d(0, 0, 0);
-    }
-    10%,
-    30%,
-    50%,
-    70%,
-    90% {
-      transform: translate3d(-15px, 0, 0);
-    }
-    20%,
-    40%,
-    60%,
-    80% {
-      transform: translate3d(15px, 0, 0);
-    }
-  }
+from,
+to {
+    transform: translate3d(0, 0, 0);
+}
+10%,
+30%,
+50%,
+70%,
+90% {
+    transform: translate3d(-15px, 0, 0);
+}
+20%,
+40%,
+60%,
+80% {
+    transform: translate3d(15px, 0, 0);
+}
+}
 
-  @keyframes flipInX {
-    from {
-      transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
-      animation-timing-function: ease-in;
-      opacity: 0;
-    }
-    40% {
-      transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-      animation-timing-function: ease-in;
-    }
-    60% {
-      transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
-      opacity: 1;
-    }
-    80% {
-      transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
-    }
-    to {
-      transform: perspective(400px);
-    }
-  }
+@keyframes flipInX {
+from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+}
+40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+}
+60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+}
+80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+}
+to {
+    transform: perspective(400px);
+}
+}
 
-  @keyframes flip {
-    from {
-      -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
-        rotate3d(0, 1, 0, -360deg);
-      transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
-      -webkit-animation-timing-function: ease-out;
-      animation-timing-function: ease-out;
-    }
-  
-    40% {
-      -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
-        rotate3d(0, 1, 0, -190deg);
-      transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
-        rotate3d(0, 1, 0, -190deg);
-      -webkit-animation-timing-function: ease-out;
-      animation-timing-function: ease-out;
-    }
-  
-    50% {
-      -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
-        rotate3d(0, 1, 0, -170deg);
-      transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
-        rotate3d(0, 1, 0, -170deg);
-      -webkit-animation-timing-function: ease-in;
-      animation-timing-function: ease-in;
-    }
-  
-    80% {
-      -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
-        rotate3d(0, 1, 0, 0deg);
-      transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
-        rotate3d(0, 1, 0, 0deg);
-      -webkit-animation-timing-function: ease-in;
-      animation-timing-function: ease-in;
-    }
-  
-    to {
-      -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
-        rotate3d(0, 1, 0, 0deg);
-      transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
-      -webkit-animation-timing-function: ease-in;
-      animation-timing-function: ease-in;
-    }
-  }
-/* each hexagon flip */
+@keyframes flip {
+from {
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+    rotate3d(0, 1, 0, -360deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+}
+40% {
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+    rotate3d(0, 1, 0, -190deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+    rotate3d(0, 1, 0, -190deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+}
+50% {
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+    rotate3d(0, 1, 0, -170deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+    rotate3d(0, 1, 0, -170deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+}
+80% {
+    -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
+    rotate3d(0, 1, 0, 0deg);
+    transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
+    rotate3d(0, 1, 0, 0deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+}
+to {
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+    rotate3d(0, 1, 0, 0deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+}
+}
 
+
+
+
+
+/* PseudoCode */
+
+  /* each hexagon flip */
+/* 1. look into absolute for overlay div
+2. research how to make divs into hexagon
+
+    cool stuff: DO LAST 
+    note about headphones ajust for diff size screen
+    include music
+    background
+    3D hexagons
+    hexagons that flip */
