@@ -3,6 +3,16 @@ console.log('linked')
 // music starts immediately
 
 // FUNCTIONS
+const firstFlip = ()=>{
+    document.querySelector('div#hex1.setOneHexagon').classList.toggle('is-flipped');
+    document.querySelector('div#hex2.setOneHexagon').classList.toggle('is-flipped');
+    document.querySelector('div#hex3.setOneHexagon').classList.toggle('is-flipped');
+    document.querySelector('div#hex4.setOneHexagon').classList.toggle('is-flipped');
+    document.querySelector('div#hex5.setOneHexagon').classList.toggle('is-flipped');
+    document.querySelector('div#hex6.setOneHexagon').classList.toggle('is-flipped');
+    document.querySelector('div#hex7.setOneHexagon').classList.toggle('is-flipped');
+}
+
 const countdown = ()=>{
     document.getElementsByClassName('.overlay').style
     // hide start screen (display to none)
@@ -15,22 +25,22 @@ const countdown = ()=>{
 let i = 0;
 const playSequence = ()=>{
 setTimeout(()=>{
-    const lightUpLeft = document.querySelector(`#${game.hexArray[i]}`).firstElementChild
-    const lightOffLeft = document.querySelector(`#${game.hexArray[i]}`).firstElementChild
+    const lightUpLeft = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[1];
+    const lightOffLeft = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[1];
     
-    const lightUpMid = document.querySelector(`#${game.hexArray[i]} > div.middle`)
-    const lightOffMid = document.querySelector(`#${game.hexArray[i]} > div.middle`)
+    const lightUpMid = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[3];
+    const lightOffMid = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[3];
 
-    const lightUpRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild
-    const lightOffRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild
+    const lightUpRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
+    const lightOffRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
     lightUpLeft.style.borderRight = "30px solid pink";
     lightUpMid.style.backgroundColor = "pink";
     lightUpRight.style.borderLeft = "30px solid pink";
 
     setTimeout(()=>{
-    lightOffLeft.style.borderRight = "30px solid #6c6";
-    lightOffMid.style.backgroundColor = "#6c6"
-    lightOffRight.style.borderLeft = "30px solid #6c6"
+    lightOffLeft.style.borderRight = "30px solid #66c";
+    lightOffMid.style.backgroundColor = "#66c"
+    lightOffRight.style.borderLeft = "30px solid #66c"
     }, 1500); 
 if(i === game.hexArray.length - 1){
     i = 0;
@@ -70,6 +80,8 @@ if(game.round < 4){
     game.player.array = [];
     game.player.score += 10
     game.round += 1;
+    document.querySelector('.score').innerText=`score: ${game.player.score}`;
+    document.querySelector('.rnd').innerText=`round: ${game.round}`;
     announceRnd();
     addHexagon();
     startNextRound();
@@ -80,6 +92,7 @@ if(game.round < 4){
 } else if(game.player.array[i] === game.hexArray[i]){
     console.log('NICE!')
     game.player.score += 1;
+    document.querySelector('.score').innerText=`score: ${game.player.score}`;
 }
 }
 }
@@ -98,26 +111,29 @@ const addHexagon = ()=>{
 let i = game.platform.length + 1;
 if(i <= 14){
     setTimeout(()=>{
-    document.querySelector(`div#hex${i}.newHexagon`).style.display="flex";
+    document.querySelector(`#hex${i}`).style.display="flex";
     game.platform.push(`hex${i}`);
+    setTimeout(()=>{
+        document.querySelector(`div#hex${i}.newHexagon`).classList.toggle('is-flipped');
+    }, 1000)
 }, 5000);
 console.log(i);
 }
 }
 
 //GAME
-document.querySelector('.screen').addEventListener('click', (e)=>{
+document.querySelector('.flowers').addEventListener('click', (e)=>{
 if(e.target.id !== ''){
     game.player.array.push(e.target.id); 
 
-    document.querySelector(`#${e.target.id}`).firstElementChild.style.borderRight='30px solid aqua'
-    document.querySelector(`#${e.target.id} > div.middle`).style.backgroundColor='aqua'
-    document.querySelector(`#${e.target.id}`).lastElementChild.style.borderLeft='30px solid aqua'
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='30px solid aqua'
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='aqua'
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft='30px solid aqua'
 
     setTimeout(()=>{
-        document.querySelector(`#${e.target.id}`).firstElementChild.style.borderRight="30px solid #6c6"
-        document.querySelector(`#${e.target.id} > div.middle`).style.backgroundColor='#6c6'
-        document.querySelector(`#${e.target.id}`).lastElementChild.style.borderLeft="30px solid #6c6"
+        document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight="30px solid #66c"
+        document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='#66c'
+        document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft="30px solid #66c"
     }, 1500)
 }
 checkForMatch();
@@ -150,8 +166,13 @@ const initiateGame = ()=>{
     game.startGame = true;
     game.player = new Player;
     game.round = 1
+    document.querySelector('.first-overlay').style.animation="fadeOutUp 2s ease-out"
+    document.getElementsByClassName('.score').innerText=`score: ${game.player.score}`;
+    document.getElementsByClassName('.rnd').innerText=`round: ${game.round}`;
     // countdown();
-    startFirstRound();
+    setTimeout(()=>{
+        startFirstRound();
+    }, 2200);
 }
 
 const game = {
@@ -163,12 +184,16 @@ const game = {
     round: 0
 }
 
+
 document.querySelector('.start').addEventListener('click', ()=>{
     console.log('started game') // test for click
     initiateGame();
+    setTimeout(()=>{
+        document.querySelector('.first-overlay').style.display="none"
+        document.querySelector('.flowers').style.filter="none"
+        firstFlip();
+    }, 1800)
 
-
-    // initiateGame();
 })
 
 

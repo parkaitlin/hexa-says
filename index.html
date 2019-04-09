@@ -6,13 +6,13 @@
     <title>hexa says</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-    <script src="js/player.js" defer></script>   
+    <script src="js/player.js"></script>   
     <script src="js/app.js" defer></script>
 </head>
 <body>
 <div class="screen">
 
-<div id="first-overlay">
+<div class="first-overlay">
 <div class="title">
 <div class='title-hexagon'>
     <div class='left0'></div>
@@ -27,16 +27,20 @@
 <h2 id='your-turn' class='pauses'>Your Turn</h2>
 <h2 id='round-num' class='pauses'></h2>
 
+<div class="onScreen">
+<h3 class='score'>score:</h3>
+<h4 class="rnd">round:</h4>
+</div>
 
-<div id="second-overlay">
+<div class="second-overlay">
         <h1>Game Over</h1>
     <form>
         <button type="submit" class="start">Try Again</button>
     </form>
 </div>
 
-<div id="flowers">
-<div id="flowerOne">
+<div class="flowers">
+<div class="flowerOne">
 
 <div class='odd-col'>
 <div class='scene'>
@@ -145,7 +149,7 @@
 </div>
 </div>
 
-<div id='flowerTwo'>
+<div class='flowerTwo'>
 
 <div class='odd-col'>
 <div class='scene'>

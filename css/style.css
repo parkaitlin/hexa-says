@@ -8,19 +8,32 @@
     3D hexagons
     hexagons that flip */
 
-#first-overlay {
-    position: fixed;
-    display: none;
+.first-overlay {
+    position: absolute;
+    z-index: 1000;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
+    width: 400px;
+    height: 250px;
     margin: auto;
-    background-color: rgba(0,0,0,0.5);
-    border: 2px solid black;
+    background-color: rgba(102,79,161,0.5);
+    border: 2px solid #664fa1;
+    border-radius: 25px;
 }
-#second-overlay {
+
+@keyframes fadeOutUp {
+from {
+    opacity: 1;
+}
+to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+}
+}
+
+.second-overlay {
     position: fixed;
     display: none;
     align-items: center;
@@ -38,6 +51,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     overflow: hidden;
 }
 .title {
@@ -73,38 +87,78 @@
     background-color: #6c6;
 }
 
-#scene {
+.scene {
     width: 120px;
     height: 104px; 
-    perspective: 600px
+    perspective: 600px;
+    margin: 4px;
 }
 
 .setOneHexagon {
     display: flex;
-    margin: 3px;
     width: 100%;
     height: 100%;
     position: relative;
     transition: transform 1s;
     transform-style: preserve-3d;
+    transform-origin: center right;
+}
+#hex1.setOneHexagon {
+    transition-delay: 0.1s
+}
+#hex2.setOneHexagon {
+    transition-delay: 0.15s
+}
+#hex3.setOneHexagon{
+    transition-delay: 0.2s
+}
+#hex4.setOneHexagon{
+    transition-delay: 0.25s
+}
+#hex5.setOneHexagon{
+    transition-delay: 0.3s
+}
+#hex6.setOneHexagon{
+    transition-delay: 0.35s
+}
+#hex7.setOneHexagon{
+    transition-delay: 0.4s
+}
+
+.setOneHexagon.is-flipped {
+    transform: translateX(-100%) rotateY(180deg);
 }
 
 .newHexagon {
-    display: flex; /* will be switched to flex when called */
+    display: none; /* will be switched to flex when called */
     margin: 3px;
     width: 100%;
     height: 100%;
     position: relative;
-    transition: transform 1s;
+    transition: transform 1.5s;
     transform-style: preserve-3d;
 }
 
+.newHexagon.is-flipped {
+    transform: translateX(0%) rotateY(180deg);
+}
+
+.face {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
 .face-front {
     display: flex;
 }
 .face-back {
     display: flex;
+    filter: drop-shadow(-10px 10px 13px #333);
+    transform: rotateY(180deg);
 }
+
+
 
 /* each hexagon is made up of 3divs */
 .left-front {
@@ -153,11 +207,11 @@
 /* hexagon done */
 
 /* hexagon flower - 7 hexagons in 3 columns (2-3-2) */
-#flowerOne {
+.flowerOne {
     display: flex;
 }
 
-#flowerTwo {
+.flowerTwo {
     display: flex;
     margin-top: 55px;
 }
@@ -176,37 +230,58 @@
     margin-right: -30px;
 }
 
-#flowers {
+.flowers {
     display: flex;
+    filter: blur(3px);
+    padding: 50px;
 }
 
 .pauses {
-    position: fixed;
+    position: absolute;
+    z-index: 1000;
     text-align: center;
     display: none;
-    animation: pulse 3s ease-in;
+    animation: bounce 1.5s ease-in;
     font-size: 30px;
 }
 
-@keyframes pulse {
-    from {
-      transform: scale3d(1, 1, 1);
-    }
-  
-    30% {
-      transform: scale3d(1.15, 1.15, 1.15);
-    }
-  
-    60% {
-        transform: scale3d(1, 1, 1);
-        opacity: 0.5;
-    }
-    to {
-      transform: scale3d(0.5, 0.5, 0.5);
-      opacity: 0;
-      display: none;
-    }
-  }
 
+@keyframes bounce {
+from,
+20%,
+53%,
+80%,
+to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+}
+
+40%,
+43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0);
+}
+
+70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0);
+}
+
+90% {
+    transform: translate3d(0, -4px, 0);
+}
+}
+
+@keyframes blurOutIn {
+    from {
+        filter: blur(1px)
+    }
+    50%{
+        filter: blur(3px)
+    }
+    to{
+        filter: blur(0)
+    }
+}
 /* each hexagon flip */
 
