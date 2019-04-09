@@ -10,7 +10,7 @@
 
 
 html {
-    /* width: 100%; */
+    width: 100%;
     /* height: 100%; */
     background-image: url("imgs/purple-stars.png");
     background-size: cover;
@@ -51,9 +51,25 @@ html {
     color: #ffffff;
     animation: flipInX 4s ease;
 }
- h1 {
+
+h1 {
     font-size: 90px;
- }
+}
+
+#winner {
+    font-size: 90px;
+    animation: flip 2s ease;
+    animation-iteration-count: 3;
+    font-family: 'Comfortaa', cursive;
+    position: absolute;
+    z-index: 1000;
+    text-align: center;
+    display: none;
+    color: #ffffff;
+    filter: drop-shadow(10px 10px 10px #ffffff);
+    background-color: rgba(102,79,161,0.5);
+    border: 2px solid #664fa1;
+}
 
 button {
     font-size: 40px;
@@ -78,7 +94,7 @@ button {
     display: flex;
     align-items: center;
     margin-right: 15px;
-    animation: flip 3s ease;
+    animation: flip 2s ease;
     animation-iteration-count: 20;
 }
 .left0 {
@@ -170,7 +186,7 @@ button {
 }
 .face-back {
     display: flex;
-    filter: drop-shadow(-10px 10px 13px #333);
+    filter: drop-shadow(-15px 10px 15px rgb(57, 35, 59));
     transform: rotateY(180deg);
 }
 
@@ -180,7 +196,7 @@ button {
 .left-front {
     width: 0;
     height: 0;
-    border-right: 45px solid #6c6;
+    border-right: 45px solid transparent;
     border-top: 78px solid transparent;
     border-bottom: 78px solid transparent;
 }
@@ -188,7 +204,7 @@ button {
 .right-front {
     width: 0;
     height: 0;
-    border-left: 45px solid #6c6;
+    border-left: 45px solid transparent;
     border-top: 78px solid transparent;
     border-bottom: 78px solid transparent;
 }
@@ -196,41 +212,44 @@ button {
 .middle-front {
     width: 90px;
     height: 156px;
-    background-color: #6c6;
+    background-color: transparent;
 }
 
 .left-back {
     width: 0;
     height: 0;
-    border-right: 45px solid #66c;
+    border-right: 45px solid #ffffff;
     border-top: 78px solid transparent;
     border-bottom: 78px solid transparent;
+
 }
 
 .right-back {
     width: 0;
     height: 0;
-    border-left: 45px solid #66c;
+    border-left: 45px solid #ffffff;
     border-top: 78px solid transparent;
     border-bottom: 78px solid transparent;
+
 }
 
 .middle-back {
     width: 90px;
     height: 156px;
-    background-color: #66c;
+    background-color: #ffffff;
 }
 /* hexagon done */
 
 /* hexagon flower - 7 hexagons in 3 columns (2-3-2) */
 .flowerOne {
     display: flex;
-    margin: 200px 0;
+    margin: 150px 0;
 }
 
 .flowerTwo {
     display: flex;
-    margin-top: 280px;
+    margin-top: 230px;
+
 }
 
 
@@ -257,14 +276,14 @@ button {
 }
 
 .onScreen {
-    margin: 150px 20px 0px 5px;
+    margin: 100px 20px 0px 5px;
     display: flex;
     flex-direction: column;
     width:170px;
     height: 100px;
     outline: none;
     border-color: #9ecaed;
-    box-shadow: 0 0 25px #9ecaed;
+    box-shadow: 0 0 30px #9ecaed;
     font-family: 'Comfortaa', cursive;
     color: #ffffff;
     font-size: 30px;

@@ -1,6 +1,5 @@
-console.log('linked')
 
-// music starts immediately
+const audio = document.querySelector("audio");
 
 // FUNCTIONS
 const firstFlip = ()=>{
@@ -13,14 +12,15 @@ const firstFlip = ()=>{
     document.querySelector('div#hex7.setOneHexagon').classList.toggle('is-flipped');
 }
 
-const countdown = ()=>{
-    document.getElementsByClassName('.overlay').style
-    // hide start screen (display to none)
-    // countdown 3-2-1
-    // unblur game screen
-    // 2s pause setTimeout
-    // startRoundOne()
-}
+// if you have time
+// const countdown = ()=>{
+//     document.getElementsByClassName('.overlay').style
+//     hide start screen (display to none)
+//     countdown 3-2-1
+//     unblur game screen
+//     2s pause setTimeout
+//     startRoundOne()
+// }
 
 let i = 0;
 const playSequence = ()=>{
@@ -33,15 +33,16 @@ setTimeout(()=>{
 
     const lightUpRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
     const lightOffRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
+    
     lightUpLeft.style.borderRight = "45px solid pink";
     lightUpMid.style.backgroundColor = "pink";
     lightUpRight.style.borderLeft = "45px solid pink";
 
     setTimeout(()=>{
-    lightOffLeft.style.borderRight = "45px solid #66c";
-    lightOffMid.style.backgroundColor = "#66c"
-    lightOffRight.style.borderLeft = "45px solid #66c"
-    }, 500); 
+    lightOffLeft.style.borderRight = "45px solid #ffffff";
+    lightOffMid.style.backgroundColor = "#ffffff"
+    lightOffRight.style.borderLeft = "45px solid #ffffff"
+}, 500); 
 if(i === game.hexArray.length - 1){
     i = 0;
     return
@@ -53,12 +54,12 @@ i++
 }
 
 const playerTurn = ()=>{
-for(let i = game.hexArray.length * 1800; i < game.hexArray.length * 1800 + 1; i++){
+for(let i = game.hexArray.length * 1500; i < game.hexArray.length * 1500 + 1; i++){
 setTimeout(()=>{
-document.getElementById('your-turn').style.display="flex";
+    document.getElementById('your-turn').style.display="flex";
 setTimeout(()=>{
     document.getElementById('your-turn').style.display="none";
-}, 800);
+}, 700);
 }, i)
 }
 }
@@ -66,21 +67,16 @@ setTimeout(()=>{
 const checkForMatch = ()=>{
 for(let i = 0; i < game.player.array.length; i++){
 if(game.player.array[i] !== game.hexArray[i]){
-    console.log('WRONG!')
     game.startGame = false;
     game.hexArray = []
     document.querySelector('.flowers').style.animation="shake 1s ease-in"
-    setTimeout(()=>{
-        document.querySelector('.second-overlay').style.display="flex"
-        document.querySelector('.flowers').style.filter="blur(5px)"    
-    }, 1000);
-
-//some animation indicating its wrong
-// game over overlay display swiched to flex
-//maybe blur the background too
+setTimeout(()=>{
+    audio.pause();
+    document.querySelector('.second-overlay').style.display="flex"
+    document.querySelector('.flowers').style.filter="blur(5px)"    
+}, 1000);
 } else if(game.player.array.length === game.hexArray.length && game.player.array[i] === game.hexArray[i]){
-// some animation indicating the next round
-if(game.round < 4){
+if(game.round < 10){
     console.log('Move on to next round')
     game.player.array = [];
     game.player.score += 10
@@ -90,12 +86,10 @@ if(game.round < 4){
     announceRnd();
     addHexagon();
     startNextRound();
-// startNextRound() <--- delay for animation like 5s
-} else if(game.round = 4){ //will initiate Winning screen
-    console.log('YOU WIN!')
+} else if(game.round = 10){ //will initiate Winning screen
+    document.getElementById('winner').style.display='flex'
 }
 } else if(game.player.array[i] === game.hexArray[i]){
-    console.log('NICE!')
     game.player.score += 1;
     document.querySelector('.score').innerText=`score: ${game.player.score}`;
 }
@@ -103,48 +97,29 @@ if(game.round < 4){
 }
 
 const announceRnd = ()=>{
-    setTimeout(()=>{
+setTimeout(()=>{
     document.querySelector('.flowers').style.filter="none"
     document.getElementById('round-num').innerText=`ROUND ${game.round}`;
     document.getElementById('round-num').style.display="flex";
-    setTimeout(()=>{
-        document.getElementById('round-num').style.display="none";
-    }, 2500);
-    }, 1500);
-    }
+setTimeout(()=>{
+    document.getElementById('round-num').style.display="none";
+}, 2500);
+}, 1500);
+}
 
 const addHexagon = ()=>{
 let i = game.platform.length + 1;
 if(i <= 14){
-    setTimeout(()=>{
-    document.querySelector(`#hex${i}`).style.display="flex";
-    game.platform.push(`hex${i}`);
-    setTimeout(()=>{
-        document.querySelector(`div#hex${i}.newHexagon`).classList.toggle('is-flipped');
-    }, 1000)
+setTimeout(()=>{
+document.querySelector(`#hex${i}`).style.display="flex";
+game.platform.push(`hex${i}`);
+setTimeout(()=>{
+    document.querySelector(`div#hex${i}.newHexagon`).classList.toggle('is-flipped');
+}, 1000)
 }, 5000);
 console.log(i);
 }
 }
-
-//GAME
-document.querySelector('.flowers').addEventListener('click', (e)=>{
-if(e.target.id !== ''){
-    game.player.array.push(e.target.id); 
-
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='45px solid aqua'
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='aqua'
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft='45px solid aqua'
-
-    setTimeout(()=>{
-        document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight="45px solid #66c"
-        document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='#66c'
-        document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft="45px solid #66c"
-    }, 500)
-}
-checkForMatch();
-console.log(game.player.array); // test 
-})
 
 const startFirstRound = ()=>{
 for(let i = 1; i < 4; i++){
@@ -165,20 +140,20 @@ for(let i = 1; i < 2; i++){
 setTimeout(()=>{
     playSequence();
     playerTurn();
-}, 6000);
+}, 6500);
 }
 
+//Game
 const initiateGame = ()=>{
-    game.startGame = true;
-    game.player = new Player;
-    game.round = 1
-    document.querySelector('.first-overlay').style.animation="fadeOutUp 2s ease-out"
-    document.querySelector('.score').innerText=`score: ${game.player.score}`;
-    document.querySelector('.rnd').innerText=`round: ${game.round}`;
-    // countdown();
-    setTimeout(()=>{
-        startFirstRound();
-    }, 2200);
+game.startGame = true;
+game.player = new Player;
+game.round = 1
+document.querySelector('.first-overlay').style.animation="fadeOutUp 2s ease-out"
+document.querySelector('.score').innerText=`score: ${game.player.score}`;
+document.querySelector('.rnd').innerText=`round: ${game.round}`;
+setTimeout(()=>{
+    startFirstRound();
+}, 2200);
 }
 
 const game = {
@@ -191,15 +166,30 @@ const game = {
 }
 
 
-document.querySelector('.start').addEventListener('click', ()=>{
-    console.log('started game') // test for click
-    initiateGame();
-    setTimeout(()=>{
-        document.querySelector('.first-overlay').style.display="none"
-        document.querySelector('.flowers').style.filter="none"
-        firstFlip();
-    }, 1800)
+//Event Listeners
+document.querySelector('.flowers').addEventListener('click', (e)=>{
+if(e.target.id !== ''){
+game.player.array.push(e.target.id); 
+document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='45px solid aqua'
+document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='aqua'
+document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft='45px solid aqua'
+setTimeout(()=>{
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight="45px solid #ffffff"
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='#ffffff'
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft="45px solid #ffffff"
+}, 500)
+}
+checkForMatch();
+})
 
+document.querySelector('.start').addEventListener('click', ()=>{
+initiateGame();
+audio.play();
+setTimeout(()=>{
+    document.querySelector('.first-overlay').style.display="none"
+    document.querySelector('.flowers').style.filter="none"
+    firstFlip();
+}, 1800)
 })
 
 
@@ -219,7 +209,7 @@ document.querySelector('.start').addEventListener('click', ()=>{
 
 
 
-
+//PSEUDOCODE 
 
 // initiateGame function
     // startGame = true
@@ -280,3 +270,7 @@ document.querySelector('.start').addEventListener('click', ()=>{
 
 //sequencing needs to build off of the existing array 
     // and also repeat the whole array again each round
+
+    //some animation indicating its wrong
+// game over overlay display swiched to flex
+//maybe blur the background too
