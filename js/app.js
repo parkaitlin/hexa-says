@@ -12,16 +12,6 @@ const firstFlip = ()=>{
     document.querySelector('div#hex7.setOneHexagon').classList.toggle('is-flipped');
 }
 
-// if you have time
-// const countdown = ()=>{
-//     document.getElementsByClassName('.overlay').style
-//     hide start screen (display to none)
-//     countdown 3-2-1
-//     unblur game screen
-//     2s pause setTimeout
-//     startRoundOne()
-// }
-
 let i = 0;
 const playSequence = ()=>{
 setTimeout(()=>{
@@ -34,14 +24,14 @@ setTimeout(()=>{
     const lightUpRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
     const lightOffRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
     
-    lightUpLeft.style.borderRight = "45px solid pink";
+    lightUpLeft.style.borderRight = "30px solid pink";
     lightUpMid.style.backgroundColor = "pink";
-    lightUpRight.style.borderLeft = "45px solid pink";
+    lightUpRight.style.borderLeft = "30px solid pink";
 
     setTimeout(()=>{
-    lightOffLeft.style.borderRight = "45px solid #ffffff";
+    lightOffLeft.style.borderRight = "30px solid #ffffff";
     lightOffMid.style.backgroundColor = "#ffffff"
-    lightOffRight.style.borderLeft = "45px solid #ffffff"
+    lightOffRight.style.borderLeft = "30px solid #ffffff"
 }, 500); 
 if(i === game.hexArray.length - 1){
     i = 0;
@@ -170,13 +160,13 @@ const game = {
 document.querySelector('.flowers').addEventListener('click', (e)=>{
 if(e.target.id !== ''){
 game.player.array.push(e.target.id); 
-document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='45px solid aqua'
+document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='30px solid aqua'
 document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='aqua'
-document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft='45px solid aqua'
+document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft='30px solid aqua'
 setTimeout(()=>{
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight="45px solid #ffffff"
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight="30px solid #ffffff"
     document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='#ffffff'
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft="45px solid #ffffff"
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft="30px solid #ffffff"
 }, 500)
 }
 checkForMatch();
@@ -210,6 +200,17 @@ setTimeout(()=>{
 
 
 //PSEUDOCODE 
+
+
+// if you have time
+// const countdown = ()=>{
+//     document.getElementsByClassName('.overlay').style
+//     hide start screen (display to none)
+//     countdown 3-2-1
+//     unblur game screen
+//     2s pause setTimeout
+//     startRoundOne()
+// }
 
 // initiateGame function
     // startGame = true

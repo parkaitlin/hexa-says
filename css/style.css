@@ -9,15 +9,17 @@
     hexagons that flip */
 
 
-html {
+body {
     width: 100%;
-    /* height: 100%; */
+    height: 80%;
     background-image: url("imgs/purple-stars.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
 }
-    .first-overlay {
+
+.first-overlay {
     font-family: 'Comfortaa', cursive;
     position: absolute;
     z-index: 1000;
@@ -84,12 +86,14 @@ button {
     justify-content: center;
     align-items: center;
 }
+
 .title {
     display: flex;
     color: white;
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
 .title-hexagon {
     display: flex;
     align-items: center;
@@ -97,6 +101,7 @@ button {
     animation: flip 2s ease;
     animation-iteration-count: 20;
 }
+
 .left0 {
     width: 0;
     height: 0;
@@ -120,10 +125,10 @@ button {
 }
 
 .scene {
-    width: 180px;
-    height: 156px; 
+    width: 120px;
+    height: 104px; 
     perspective: 600px;
-    margin: 4px;
+    margin: 7px;
 }
 
 .setOneHexagon {
@@ -196,46 +201,46 @@ button {
 .left-front {
     width: 0;
     height: 0;
-    border-right: 45px solid transparent;
-    border-top: 78px solid transparent;
-    border-bottom: 78px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
 }
 
 .right-front {
     width: 0;
     height: 0;
-    border-left: 45px solid transparent;
-    border-top: 78px solid transparent;
-    border-bottom: 78px solid transparent;
+    border-left: 30px solid transparent;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
 }
 
 .middle-front {
-    width: 90px;
-    height: 156px;
+    width: 60px;
+    height: 104px;
     background-color: transparent;
 }
 
 .left-back {
     width: 0;
     height: 0;
-    border-right: 45px solid #ffffff;
-    border-top: 78px solid transparent;
-    border-bottom: 78px solid transparent;
+    border-right: 30px solid #ffffff;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
 
 }
 
 .right-back {
     width: 0;
     height: 0;
-    border-left: 45px solid #ffffff;
-    border-top: 78px solid transparent;
-    border-bottom: 78px solid transparent;
+    border-left: 30px solid #ffffff;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
 
 }
 
 .middle-back {
-    width: 90px;
-    height: 156px;
+    width: 60px;
+    height: 104px;
     background-color: #ffffff;
 }
 /* hexagon done */
@@ -248,22 +253,21 @@ button {
 
 .flowerTwo {
     display: flex;
-    margin-top: 230px;
+    margin-top: 210px;
 
 }
 
-
 .odd-col {
-    margin-top: 86px;
+    margin-top: 57px;
     display: flex;
     flex-direction: column;
-    margin-right: -37px;
+    margin-right: -25px;
 }
 
 .even-col {
     display: flex;
     flex-direction: column;
-    margin-right: -37px;
+    margin-right: -25px;
 }
 
 .flowers {
@@ -276,17 +280,18 @@ button {
 }
 
 .onScreen {
-    margin: 100px 20px 0px 5px;
     display: flex;
     flex-direction: column;
-    width:170px;
-    height: 100px;
+    justify-content: space-between;
+    margin: 100px 0;
+    width:125px;
+    height: 80px;
     outline: none;
     border-color: #9ecaed;
     box-shadow: 0 0 30px #9ecaed;
     font-family: 'Comfortaa', cursive;
     color: #ffffff;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .score {
@@ -307,6 +312,10 @@ button {
     box-shadow: 0 5px 10px #ffffff;
 }
 
+figure {
+display: hidden;
+}
+/* Used Keyframes */
 
 @keyframes fadeOutUp {
     from {

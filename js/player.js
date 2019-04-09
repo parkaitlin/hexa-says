@@ -1,4 +1,3 @@
-console.log('linked')
 
 class Player {
 constructor(){
