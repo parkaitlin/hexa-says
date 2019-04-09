@@ -33,15 +33,15 @@ setTimeout(()=>{
 
     const lightUpRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
     const lightOffRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
-    lightUpLeft.style.borderRight = "30px solid pink";
+    lightUpLeft.style.borderRight = "45px solid pink";
     lightUpMid.style.backgroundColor = "pink";
-    lightUpRight.style.borderLeft = "30px solid pink";
+    lightUpRight.style.borderLeft = "45px solid pink";
 
     setTimeout(()=>{
-    lightOffLeft.style.borderRight = "30px solid #66c";
+    lightOffLeft.style.borderRight = "45px solid #66c";
     lightOffMid.style.backgroundColor = "#66c"
-    lightOffRight.style.borderLeft = "30px solid #66c"
-    }, 1500); 
+    lightOffRight.style.borderLeft = "45px solid #66c"
+    }, 500); 
 if(i === game.hexArray.length - 1){
     i = 0;
     return
@@ -49,16 +49,16 @@ if(i === game.hexArray.length - 1){
     playSequence();
 }
 i++
-},2000)
+},1000)
 }
 
 const playerTurn = ()=>{
-for(let i = game.hexArray.length * 2600; i < game.hexArray.length * 2600 + 1; i++){
+for(let i = game.hexArray.length * 1800; i < game.hexArray.length * 1800 + 1; i++){
 setTimeout(()=>{
 document.getElementById('your-turn').style.display="flex";
 setTimeout(()=>{
     document.getElementById('your-turn').style.display="none";
-}, 2800);
+}, 800);
 }, i)
 }
 }
@@ -69,7 +69,12 @@ if(game.player.array[i] !== game.hexArray[i]){
     console.log('WRONG!')
     game.startGame = false;
     game.hexArray = []
-    document.getElementById('second-overlay').style.display="flex"
+    document.querySelector('.flowers').style.animation="shake 1s ease-in"
+    setTimeout(()=>{
+        document.querySelector('.second-overlay').style.display="flex"
+        document.querySelector('.flowers').style.filter="blur(5px)"    
+    }, 1000);
+
 //some animation indicating its wrong
 // game over overlay display swiched to flex
 //maybe blur the background too
@@ -99,12 +104,13 @@ if(game.round < 4){
 
 const announceRnd = ()=>{
     setTimeout(()=>{
+    document.querySelector('.flowers').style.filter="none"
     document.getElementById('round-num').innerText=`ROUND ${game.round}`;
     document.getElementById('round-num').style.display="flex";
     setTimeout(()=>{
         document.getElementById('round-num').style.display="none";
-    }, 2900);
-    }, 1700);
+    }, 2500);
+    }, 1500);
     }
 
 const addHexagon = ()=>{
@@ -126,15 +132,15 @@ document.querySelector('.flowers').addEventListener('click', (e)=>{
 if(e.target.id !== ''){
     game.player.array.push(e.target.id); 
 
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='30px solid aqua'
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='45px solid aqua'
     document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='aqua'
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft='30px solid aqua'
+    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft='45px solid aqua'
 
     setTimeout(()=>{
-        document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight="30px solid #66c"
+        document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight="45px solid #66c"
         document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='#66c'
-        document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft="30px solid #66c"
-    }, 1500)
+        document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft="45px solid #66c"
+    }, 500)
 }
 checkForMatch();
 console.log(game.player.array); // test 
@@ -159,7 +165,7 @@ for(let i = 1; i < 2; i++){
 setTimeout(()=>{
     playSequence();
     playerTurn();
-}, 6500);
+}, 6000);
 }
 
 const initiateGame = ()=>{
@@ -167,8 +173,8 @@ const initiateGame = ()=>{
     game.player = new Player;
     game.round = 1
     document.querySelector('.first-overlay').style.animation="fadeOutUp 2s ease-out"
-    document.getElementsByClassName('.score').innerText=`score: ${game.player.score}`;
-    document.getElementsByClassName('.rnd').innerText=`round: ${game.round}`;
+    document.querySelector('.score').innerText=`score: ${game.player.score}`;
+    document.querySelector('.rnd').innerText=`round: ${game.round}`;
     // countdown();
     setTimeout(()=>{
         startFirstRound();
