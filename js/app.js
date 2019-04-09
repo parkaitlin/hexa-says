@@ -15,11 +15,22 @@ const countdown = ()=>{
 let i = 0;
 const playSequence = ()=>{
 setTimeout(()=>{
-    const lightUp = document.getElementById(game.hexArray[i])
-    const lightOff = document.getElementById(game.hexArray[i])
-    lightUp.style.backgroundColor = "pink";
+    const lightUpLeft = document.querySelector(`#${game.hexArray[i]}`).firstElementChild
+    const lightOffLeft = document.querySelector(`#${game.hexArray[i]}`).firstElementChild
+    
+    const lightUpMid = document.querySelector(`#${game.hexArray[i]} > div.middle`)
+    const lightOffMid = document.querySelector(`#${game.hexArray[i]} > div.middle`)
+
+    const lightUpRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild
+    const lightOffRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild
+    lightUpLeft.style.borderRight = "30px solid pink";
+    lightUpMid.style.backgroundColor = "pink";
+    lightUpRight.style.borderLeft = "30px solid pink";
+
     setTimeout(()=>{
-    lightOff.style.backgroundColor = "green";
+    lightOffLeft.style.borderRight = "30px solid #6c6";
+    lightOffMid.style.backgroundColor = "#6c6"
+    lightOffRight.style.borderLeft = "30px solid #6c6"
     }, 1500); 
 if(i === game.hexArray.length - 1){
     i = 0;
@@ -87,7 +98,7 @@ const addHexagon = ()=>{
 let i = game.platform.length + 1;
 if(i <= 14){
     setTimeout(()=>{
-    document.getElementById(`hex${i}`).style.display="flex";
+    document.querySelector(`div#hex${i}.newHexagon`).style.display="flex";
     game.platform.push(`hex${i}`);
 }, 5000);
 console.log(i);
@@ -95,12 +106,18 @@ console.log(i);
 }
 
 //GAME
-document.querySelector('.hexagons').addEventListener('click', (e)=>{
+document.querySelector('.screen').addEventListener('click', (e)=>{
 if(e.target.id !== ''){
     game.player.array.push(e.target.id); 
-    document.getElementById(e.target.id).style.backgroundColor='aqua'
+
+    document.querySelector(`#${e.target.id}`).firstElementChild.style.borderRight='30px solid aqua'
+    document.querySelector(`#${e.target.id} > div.middle`).style.backgroundColor='aqua'
+    document.querySelector(`#${e.target.id}`).lastElementChild.style.borderLeft='30px solid aqua'
+
     setTimeout(()=>{
-        document.getElementById(e.target.id).style.backgroundColor='green'
+        document.querySelector(`#${e.target.id}`).firstElementChild.style.borderRight="30px solid #6c6"
+        document.querySelector(`#${e.target.id} > div.middle`).style.backgroundColor='#6c6'
+        document.querySelector(`#${e.target.id}`).lastElementChild.style.borderLeft="30px solid #6c6"
     }, 1500)
 }
 checkForMatch();
@@ -108,7 +125,7 @@ console.log(game.player.array); // test
 })
 
 const startFirstRound = ()=>{
-for(let i = 1; i < 5; i++){
+for(let i = 1; i < 4; i++){
     let randomArray = Math.floor(Math.random() * 7 + 1);
     game.hexArray.push(`hex${randomArray}`);
     console.log(game.hexArray); // test 
@@ -134,6 +151,7 @@ const initiateGame = ()=>{
     game.player = new Player;
     game.round = 1
     // countdown();
+    startFirstRound();
 }
 
 const game = {
@@ -147,9 +165,12 @@ const game = {
 
 document.querySelector('.start').addEventListener('click', ()=>{
     console.log('started game') // test for click
+    initiateGame();
+
 
     // initiateGame();
 })
+
 
 
 
