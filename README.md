@@ -21,7 +21,7 @@ Game walkthrough:
 5b. If the user plays the correct sequence and they have reached the last level, the user is a WINNER!
 5c. If the user plays the incorrect sequence then the music will stop and the user will see a "Game Over" screen along with a "try again" button. The "try again" button will send the user back to the title screen
 
-Wireframe & visuals: From the start I wanted to play with geometric shapes. In order to create each hexagon, I used 3 <div>s. The sides were made of the border of a div with 0 width & height, and the center was a porportionally sized rectangular <div>. Then, to create the "flowers" I used CSS flexbox.
+Wireframe & visuals: From the start I wanted to play with geometric shapes. In order to create each hexagon, I used 3 divs. The sides were made of the border of a div with 0 width & height, and the center was a porportionally sized rectangular div. Then, to create the "flowers" I used CSS flexbox.
 
 I hoped to take a simple game and make it a bit more fun, challenging, but also asthetically pleasing. 
 
