@@ -24,6 +24,13 @@ Using JavaScript, I created various functions, manipulated the DOM and styleshee
 
 #### Wireframe & visuals: From the start I wanted to play with geometric shapes. In order to create each hexagon, I used 3 divs. The sides were made of the border of a div with 0 width & height, and the center was a porportionally sized rectangular div. Then, to create the "flowers" I used CSS flexbox.
 
+### Technologies
+- JavaScript
+- Vanilla JS
+- CSS
+    @Keyframes
+- HTML5
+
 I hoped to take a simple game and make it a bit more fun, challenging, but also asthetically pleasing. 
 
 I hope you enjoy this little brain teaser!
