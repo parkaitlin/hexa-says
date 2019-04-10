@@ -111,7 +111,6 @@ const startFirstRound = ()=>{
 for(let i = 1; i < 4; i++){
     let randomArray = Math.floor(Math.random() * 7 + 1);
     game.hexArray.push(`hex${randomArray}`);
-    console.log(game.hexArray); // test 
 }
 playSequence();
 playerTurn();
@@ -178,6 +177,14 @@ setTimeout(()=>{
 }, 1800)
 })
 
+document.querySelector('.gameOver').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const name = document.querySelector('#name').value;
+    console.log(document.querySelector('#name').value);
+    const newLi = document.createElement('li');
+    newLi.innerText=`${name} __ ${game.player.score}`;
+    document.querySelector('#orderList').appendChild(newLi);
+})
 
 
 
