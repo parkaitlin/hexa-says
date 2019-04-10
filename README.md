@@ -26,9 +26,7 @@ Using JavaScript, I created various functions, manipulated the DOM and styleshee
 
 ### Technologies
 - JavaScript
-- Vanilla JS
-- CSS
-    @Keyframes
+- CSS3
 - HTML5
 
 I hoped to take a simple game and make it a bit more fun, challenging, but also asthetically pleasing. 
