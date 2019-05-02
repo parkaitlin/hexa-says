@@ -44,6 +44,7 @@ i++
 }
 
 const playerTurn = ()=>{
+game.playersTurn = true;
 for(let i = game.hexArray.length * 1300; i < game.hexArray.length * 1300 + 1; i++){
 setTimeout(()=>{
     document.getElementById('your-turn').style.display="flex";
@@ -58,6 +59,7 @@ const checkForMatch = ()=>{
 for(let i = 0; i < game.player.array.length; i++){
 if(game.player.array[i] !== game.hexArray[i]){
     game.startGame = false;
+    game.playersTurn = false;
     game.hexArray = []
     document.querySelector('.flowers').style.animation="shake 1s ease-in"
 setTimeout(()=>{
@@ -67,10 +69,10 @@ setTimeout(()=>{
 }, 1000);
 } else if(game.player.array.length === game.hexArray.length && game.player.array[i] === game.hexArray[i]){
 if(game.round < 10){
-    console.log('Move on to next round')
     game.player.array = [];
     game.player.score += 10
     game.round += 1;
+    game.playersTurn = false;
     document.querySelector('.score').innerText=`score: ${game.player.score}`;
     document.querySelector('.rnd').innerText=`round: ${game.round}`;
     announceRnd();
@@ -147,13 +149,14 @@ const game = {
     platform: ['hex1', 'hex2', 'hex3', 'hex4', 'hex5', 'hex6', 'hex7'],
     player:{},
     hexArray: [],
+    playersTurn: false,
     round: 0
 }
 
 
 //Event Listeners
 document.querySelector('.flowers').addEventListener('click', (e)=>{
-if(e.target.id !== ''){
+if(e.target.id !== '' && game.playersTurn === true){
 game.player.array.push(e.target.id); 
 document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='30px solid rgba(206,186,199,1)'
 document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='rgba(206,186,199,1)'
