@@ -14,25 +14,26 @@ const firstFlip = ()=>{
 
 let i = 0;
 const playSequence = ()=>{
-setTimeout(()=>{
-    const lightUpLeft = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[1];
-    const lightOffLeft = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[1];
-    
-    const lightUpMid = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[3];
-    const lightOffMid = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[3];
-
-    const lightUpRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
-    const lightOffRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
-    
-    lightUpLeft.style.borderRight = "30px solid rgba(206,186,199,1)";
-    lightUpMid.style.backgroundColor = "rgba(206,186,199,1)";
-    lightUpRight.style.borderLeft = "30px solid rgba(206,186,199,1)";
-
+    game.playersTurn = false
     setTimeout(()=>{
-    lightOffLeft.style.borderRight = "30px solid rgba(206,186,199,0.5)";
-    lightOffMid.style.backgroundColor = "rgba(206,186,199,0.5)"
-    lightOffRight.style.borderLeft = "30px solid rgba(206,186,199,0.5)"
-}, 500); 
+        const lightUpLeft = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[1];
+        const lightOffLeft = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[1];
+        
+        const lightUpMid = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[3];
+        const lightOffMid = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[3];
+
+        const lightUpRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
+        const lightOffRight = document.querySelector(`#${game.hexArray[i]}`).lastElementChild.childNodes[5];
+        
+        lightUpLeft.style.borderRight = "30px solid rgba(206,186,199,1)";
+        lightUpMid.style.backgroundColor = "rgba(206,186,199,1)";
+        lightUpRight.style.borderLeft = "30px solid rgba(206,186,199,1)";
+
+        setTimeout(()=>{
+        lightOffLeft.style.borderRight = "30px solid rgba(206,186,199,0.5)";
+        lightOffMid.style.backgroundColor = "rgba(206,186,199,0.5)";
+        lightOffRight.style.borderLeft = "30px solid rgba(206,186,199,0.5)";
+    }, 500); 
 if(i === game.hexArray.length - 1){
     i = 0;
     return
@@ -80,9 +81,11 @@ if(game.round < 10){
     startNextRound();
 } else if(game.round = 10){ //will initiate Winning screen
     document.getElementById('winner').style.display='flex'
+    game.playersTurn = false;
 }
 } else if(game.player.array[i] === game.hexArray[i]){
     game.player.score += 1;
+    game.playersTurn = false;
     document.querySelector('.score').innerText=`score: ${game.player.score}`;
 }
 }
@@ -155,20 +158,22 @@ const game = {
 
 
 //Event Listeners
-document.querySelector('.flowers').addEventListener('click', (e)=>{
-if(e.target.id !== '' && game.playersTurn === true){
-game.player.array.push(e.target.id); 
-document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='30px solid rgba(206,186,199,1)'
-document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='rgba(206,186,199,1)'
-document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft='30px solid rgba(206,186,199,1)'
-setTimeout(()=>{
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight="30px solid rgba(206,186,199,0.6)"
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='rgba(206,186,199,0.6)'
-    document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft="30px solid rgba(206,186,199,0.6)"
-}, 500)
+if(game.playersTurn === true){
+    document.querySelector('.flowers').addEventListener('click', (e)=>{
+        if(e.target.id !== ''){
+            game.player.array.push(e.target.id); 
+            document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='30px solid rgba(206,186,199,1)'
+            document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='rgba(206,186,199,1)'
+            document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft='30px solid rgba(206,186,199,1)'
+            setTimeout(()=>{
+                document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight="30px solid rgba(206,186,199,0.6)"
+                document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[3].style.backgroundColor='rgba(206,186,199,0.6)'
+                document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[5].style.borderLeft="30px solid rgba(206,186,199,0.6)"
+            }, 500)
+        }
+        checkForMatch();
+    })
 }
-checkForMatch();
-})
 
 document.querySelector('.start').addEventListener('click', ()=>{
 initiateGame();
