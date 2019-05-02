@@ -36,6 +36,7 @@ const playSequence = ()=>{
     }, 500); 
 if(i === game.hexArray.length - 1){
     i = 0;
+    game.playersTurn = true
     return
 } else if(i < game.hexArray.length){
     playSequence();
@@ -45,7 +46,6 @@ i++
 }
 
 const playerTurn = ()=>{
-game.playersTurn = true;
 for(let i = game.hexArray.length * 1300; i < game.hexArray.length * 1300 + 1; i++){
 setTimeout(()=>{
     document.getElementById('your-turn').style.display="flex";
@@ -73,7 +73,6 @@ if(game.round < 10){
     game.player.array = [];
     game.player.score += 10
     game.round += 1;
-    game.playersTurn = false;
     document.querySelector('.score').innerText=`score: ${game.player.score}`;
     document.querySelector('.rnd').innerText=`round: ${game.round}`;
     announceRnd();
@@ -81,11 +80,9 @@ if(game.round < 10){
     startNextRound();
 } else if(game.round = 10){ //will initiate Winning screen
     document.getElementById('winner').style.display='flex'
-    game.playersTurn = false;
 }
 } else if(game.player.array[i] === game.hexArray[i]){
     game.player.score += 1;
-    game.playersTurn = false;
     document.querySelector('.score').innerText=`score: ${game.player.score}`;
 }
 }
