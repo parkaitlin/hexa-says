@@ -40,23 +40,22 @@ const playSequence = ()=>{
 if(i === game.hexArray.length - 1){
     i = 0;
     game.playersTurn = true
+    playerTurn();
     return
 } else if(i < game.hexArray.length){
     playSequence();
 }
 i++
-},1000)
+},800)
 }
 
 const playerTurn = ()=>{
-for(let i = game.hexArray.length * 1300; i < game.hexArray.length * 1300 + 1; i++){
-setTimeout(()=>{
-    document.getElementById('your-turn').style.display="flex";
-setTimeout(()=>{
-    document.getElementById('your-turn').style.display="none";
-}, 900);
-}, i)
-}
+    setTimeout(()=>{
+        document.getElementById('your-turn').style.display="flex";
+        setTimeout(()=>{
+            document.getElementById('your-turn').style.display="none";
+        }, 900);
+    }, 600)
 }
 
 const checkForMatch = ()=>{
@@ -72,7 +71,7 @@ if(game.player.array[i] !== game.hexArray[i]){
         document.querySelector('.flowers').style.filter="blur(5px)"    
     }, 1000);
 } else if(game.player.array.length === game.hexArray.length && game.player.array[i] === game.hexArray[i]){
-    if(game.round < 3){
+    if(game.round < 30){
         game.playersTurn = false;
         game.player.array = [];
         game.player.score += 10
@@ -82,7 +81,7 @@ if(game.player.array[i] !== game.hexArray[i]){
         announceRnd();
         addHexagon();
         startNextRound();
-    } else if(game.round = 3){ //will initiate Winning screen
+    } else if(game.round = 30){ //will initiate Winning screen
         game.playersTurn = false;
         document.getElementById('winner').style.display='flex'
     }
@@ -120,7 +119,6 @@ for(let i = 1; i < 4; i++){
     game.hexArray.push(`hex${randomArray}`);
 }
 playSequence();
-playerTurn();
 }
 
 const startNextRound = ()=>{
@@ -131,7 +129,6 @@ for(let i = 1; i < 2; i++){
 }
 setTimeout(()=>{
     playSequence();
-    playerTurn();
 }, 2800);
 }
 
