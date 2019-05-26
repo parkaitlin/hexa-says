@@ -1,5 +1,8 @@
 
 const audio = document.querySelector("audio");
+const body = document.querySelector('body');
+body.width = window.innerWidth
+body.height = window.innerHeight
 
 // FUNCTIONS
 const firstFlip = ()=>{
@@ -63,28 +66,30 @@ if(game.player.array[i] !== game.hexArray[i]){
     game.playersTurn = false;
     game.hexArray = []
     document.querySelector('.flowers').style.animation="shake 1s ease-in"
-setTimeout(()=>{
-    audio.pause();
-    document.querySelector('.second-overlay').style.display="flex"
-    document.querySelector('.flowers').style.filter="blur(5px)"    
-}, 1000);
+    setTimeout(()=>{
+        audio.pause();
+        document.querySelector('.second-overlay').style.display="flex"
+        document.querySelector('.flowers').style.filter="blur(5px)"    
+    }, 1000);
 } else if(game.player.array.length === game.hexArray.length && game.player.array[i] === game.hexArray[i]){
-if(game.round < 10){
-    game.player.array = [];
-    game.player.score += 10
-    game.round += 1;
-    document.querySelector('.score').innerText=`score: ${game.player.score}`;
-    document.querySelector('.rnd').innerText=`round: ${game.round}`;
-    announceRnd();
-    addHexagon();
-    startNextRound();
-} else if(game.round = 10){ //will initiate Winning screen
-    document.getElementById('winner').style.display='flex'
-}
-} else if(game.player.array[i] === game.hexArray[i]){
-    game.player.score += 1;
-    document.querySelector('.score').innerText=`score: ${game.player.score}`;
-}
+    if(game.round < 3){
+        game.playersTurn = false;
+        game.player.array = [];
+        game.player.score += 10
+        game.round += 1;
+        document.querySelector('.score').innerText=`score: ${game.player.score}`;
+        document.querySelector('.rnd').innerText=`round: ${game.round}`;
+        announceRnd();
+        addHexagon();
+        startNextRound();
+    } else if(game.round = 3){ //will initiate Winning screen
+        game.playersTurn = false;
+        document.getElementById('winner').style.display='flex'
+    }
+    } else if(game.player.array[i] === game.hexArray[i]){
+        game.player.score += 1;
+        document.querySelector('.score').innerText=`score: ${game.player.score}`;
+    }
 }
 }
 
