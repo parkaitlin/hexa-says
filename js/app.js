@@ -59,38 +59,39 @@ const playerTurn = ()=>{
 }
 
 const checkForMatch = ()=>{
-for(let i = 0; i < game.player.array.length; i++){
-if(game.player.array[i] !== game.hexArray[i]){
-    game.startGame = false;
-    game.playersTurn = false;
-    game.hexArray = []
-    document.querySelector('.flowers').style.animation="shake 1s ease-in"
-    setTimeout(()=>{
-        audio.pause();
-        document.querySelector('.second-overlay').style.display="flex"
-        document.querySelector('.flowers').style.filter="blur(5px)"    
-    }, 1000);
-} else if(game.player.array.length === game.hexArray.length && game.player.array[i] === game.hexArray[i]){
-    if(game.round < 30){
+    console.log(game.player.array)
+    const i = game.player.array.length - 1
+    if(game.player.array[i] !== game.hexArray[i]){
+        game.startGame = false;
         game.playersTurn = false;
-        game.player.array = [];
-        game.player.score += 10
-        game.round += 1;
-        document.querySelector('.score').innerText=`score: ${game.player.score}`;
-        document.querySelector('.rnd').innerText=`round: ${game.round}`;
-        announceRnd();
-        addHexagon();
-        startNextRound();
-    } else if(game.round = 30){ //will initiate Winning screen
-        game.playersTurn = false;
-        document.getElementById('winner').style.display='flex'
-    }
+        game.hexArray = []
+        document.querySelector('.flowers').style.animation="shake 1s ease-in"
+        setTimeout(()=>{
+            audio.pause();
+            document.querySelector('.second-overlay').style.display="flex"
+            document.querySelector('.flowers').style.filter="blur(5px)"    
+        }, 1000);
+    } else if(game.player.array.length === game.hexArray.length && game.player.array[i] === game.hexArray[i]){
+        if(game.round < 30){
+            game.playersTurn = false;
+            game.player.array = [];
+            game.player.score += 11
+            game.round += 1;
+            document.querySelector('.score').innerText=`score: ${game.player.score}`;
+            document.querySelector('.rnd').innerText=`round: ${game.round}`;
+            announceRnd();
+            addHexagon();
+            startNextRound();
+        } else if(game.round = 30){ //will initiate Winning screen
+            game.playersTurn = false;
+            document.getElementById('winner').style.display='flex'
+        }
     } else if(game.player.array[i] === game.hexArray[i]){
         game.player.score += 1;
         document.querySelector('.score').innerText=`score: ${game.player.score}`;
     }
 }
-}
+
 
 const announceRnd = ()=>{
 setTimeout(()=>{
@@ -158,6 +159,7 @@ const game = {
 
 //Event Listeners
 document.querySelector('.flowers').addEventListener('click', (e)=>{
+    console.log(e.target)
     if(e.target.id !== '' && game.playersTurn === true){
         game.player.array.push(e.target.id); 
         document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='30px solid rgba(206,186,199,1)'
