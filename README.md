@@ -1,4 +1,4 @@
-# Hex-says
+# Hexa-says
 
 ### Wireframe
 <img src="wireframe.png">
