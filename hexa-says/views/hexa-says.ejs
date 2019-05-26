@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>hexa says</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <script src="js/player.js"></script>   
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <div class="screen">
+        <div class="first-overlay">
+            <div class="title">
+                <div class='title-hexagon'>
+                    <div class='left0'></div>
+                    <div class='middle0'></div>
+                    <div class='right0'></div>
+                </div> <!-- should be inline with h1 element -->
+                <h1>says</h1>
+            </div>
+            <button type="submit" class="start">START</button>
+        </div>
+
+        <h2 id='your-turn' class='pauses'>Your Turn</h2>
+        <h2 id='round-num' class='pauses'></h2>
+        <h2 id='winner'>!!!WINNER!!!</h2>
+
+        <div class="second-overlay">
+            <h1>Game Over</h1>
+            <form class="gameOver">
+                <input type="text" id="name" placeholder="name for the">  
+                <button type="submit" class="name">leaderboard</button>
+            </form>
+            <form>
+                <button type="submit" class="start">Try Again</button>
+            </form>
+            <div class='board'>
+                <h4 class="leaderboard">leaderboard</h4>
+                <div class="underline"></div>
+                <div class="leader-list">    
+                    <span><i class="fas fa-crown"></i>Name</span><span class="high-score">High Score</span></li>
+                    <ol>
+                        <!-- <li id='firstPlace'></li> -->
+                    </ol>
+                </div>
+        </div>
+    </div>
+
+    <div class="flowers">
+        <div class="onScreen">
+            <h3 class='score'>score:</h3>
+            <h4 class="rnd">round:</h4>
+        </div>
+        <div class="flowerOne">
+            <div class='odd-col'>
+                <div class='scene'>
+                    <div id="hex1" class="setOneHexagon">
+                        <div class='face face-front'>
+                            <div id='hex1' class='left-front'></div>
+                            <div id='hex1' class='middle-front'></div>
+                            <div id='hex1' class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex1' class='left-back'></div>
+                            <div id='hex1' class='middle-back'></div>
+                            <div id='hex1' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='scene'>
+                    <div id="hex2" class="setOneHexagon">
+                        <div class='face face-front'>
+                            <div id="hex2" class='left-front'></div>
+                            <div id="hex2" class='middle-front'></div>
+                            <div id="hex2" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex2' class='left-back'></div>
+                            <div id='hex2' class='middle-back'></div>
+                            <div id='hex2' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='even-col'>
+                <div class='scene'>
+                    <div id="hex3" class="setOneHexagon">
+                        <div class='face face-front'>
+                            <div id="hex3" class='left-front'></div>
+                            <div id="hex3" class='middle-front'></div>
+                            <div id="hex3" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex3' class='left-back'></div>
+                            <div id='hex3' class='middle-back'></div>
+                            <div id='hex3' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='scene'>
+                    <div id="hex4" class="setOneHexagon">
+                        <div class='face face-front'>
+                            <div id="hex4" class='left-front'></div>
+                            <div id="hex4" class='middle-front'></div>
+                            <div id="hex4" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex4' class='left-back'></div>
+                            <div id='hex4' class='middle-back'></div>
+                            <div id='hex4' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='scene'>
+                    <div id="hex5" class="setOneHexagon">
+                        <div class='face face-front'>
+                            <div id="hex5" class='left-front'></div>
+                            <div id="hex5" class='middle-front'></div>
+                            <div id="hex5" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex5' class='left-back'></div>
+                            <div id='hex5' class='middle-back'></div>
+                            <div id='hex5' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='odd-col'>
+                <div class='scene'>
+                    <div id="hex6" class="setOneHexagon">
+                        <div class='face face-front'>
+                            <div id="hex6" class='left-front'></div>
+                            <div id="hex6" class='middle-front'></div>
+                            <div id="hex6" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex6' class='left-back'></div>
+                            <div id='hex6' class='middle-back'></div>
+                            <div id='hex6' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='scene'>
+                    <div id="hex7" class="setOneHexagon">
+                        <div class='face face-front'>
+                            <div id="hex7" class='left-front'></div>
+                            <div id="hex7" class='middle-front'></div>
+                            <div id="hex7" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex7' class='left-back'></div>
+                            <div id='hex7' class='middle-back'></div>
+                            <div id='hex7' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='flowerTwo'>
+            <div class='odd-col'>
+                <div class='scene'>
+                    <div id="hex8" class="newHexagon">
+                        <div class='face face-front'>
+                            <div id="hex8" class='left-front'></div>
+                            <div id="hex8" class='middle-front'></div>
+                            <div id="hex8" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex8' class='left-back'></div>
+                            <div id='hex8' class='middle-back'></div>
+                            <div id='hex8' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='scene'>
+                    <div id="hex9" class="newHexagon">
+                        <div class='face face-front'>
+                            <div id="hex9" class='left-front'></div>
+                            <div id="hex9" class='middle-front'></div>
+                            <div id="hex9" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex9' class='left-back'></div>
+                            <div id='hex9' class='middle-back'></div>
+                            <div id='hex9' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='even-col'>
+                <div class='scene'>
+                    <div id="hex10" class="newHexagon">
+                        <div class='face face-front'>
+                            <div id="hex10" class='left-front'></div>
+                            <div id="hex10" class='middle-front'></div>
+                            <div id="hex10" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex10' class='left-back'></div>
+                            <div id='hex10' class='middle-back'></div>
+                            <div id='hex10' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='scene'>
+                    <div id="hex11" class="newHexagon">
+                        <div class='face face-front'>
+                            <div id="hex11" class='left-front'></div>
+                            <div id="hex11" class='middle-front'></div>
+                            <div id="hex11" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex11' class='left-back'></div>
+                            <div id='hex11' class='middle-back'></div>
+                            <div id='hex11' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='scene'>
+                    <div id="hex12" class="newHexagon">
+                        <div class='face face-front'>
+                            <div id="hex12" class='left-front'></div>
+                            <div id="hex12" class='middle-front'></div>
+                            <div id="hex12" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex12' class='left-back'></div>
+                            <div id='hex12' class='middle-back'></div>
+                            <div id='hex12' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='odd-col'>
+                <div class='scene'>
+                    <div id="hex13" class="newHexagon">
+                        <div class='face face-front'>
+                            <div id="hex13" class='left-front'></div>
+                            <div id="hex13" class='middle-front'></div>
+                            <div id="hex13" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex13' class='left-back'></div>
+                            <div id='hex13' class='middle-back'></div>
+                            <div id='hex13' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='scene'>
+                    <div id="hex14" class="newHexagon">
+                        <div class='face face-front'>
+                            <div id="hex14" class='left-front'></div>
+                            <div id="hex14" class='middle-front'></div>
+                            <div id="hex14" class='right-front'></div>
+                        </div>
+                        <div class='face face-back'>
+                            <div id='hex14' class='left-back'></div>
+                            <div id='hex14' class='middle-back'></div>
+                            <div id='hex14' class='right-back'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<figure>
+    <audio
+        src="throwaway.m4a">
+    </audio>
+</figure>  
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,453 @@
+
+body {
+    background-image: url("../imgs/purple-stars.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+}
+
+.first-overlay {
+    font-family: 'Comfortaa', cursive;
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    height: 40%;
+    margin: auto;
+    background-color: rgba(102,79,161,0.5);
+    border: 2px solid #664fa1;
+    border-radius: 25px;
+    box-shadow: 0 0px 20px #ffffff;
+}
+
+.second-overlay {
+    position: absolute;
+    z-index: 1000;
+    font-family: 'Comfortaa', cursive;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 97%;
+    height: 97%;
+    border-radius: 25px;
+    margin: auto;
+    background-color: rgba(102,79,161,0.5);
+    border: 2px solid #664fa1;
+    color: #ffffff;
+    animation: flipInX 4s ease;
+}
+
+h1 {
+    font-size: 90px;
+    margin: 50px 0;
+}
+
+#winner {
+    font-size: 90px;
+    animation: flip 2s ease;
+    animation-iteration-count: 3;
+    font-family: 'Comfortaa', cursive;
+    position: absolute;
+    z-index: 1000;
+    text-align: center;
+    display: none;
+    color: #ffffff;
+    filter: drop-shadow(10px 10px 10px #ffffff);
+    background-color: rgba(102,79,161,0.5);
+    border: 2px solid #664fa1;
+}
+
+button {
+    font-size: 40px;
+    font-family: inherit;
+    border-radius: 15px
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.title-hexagon {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    animation: flip 2s ease;
+    animation-iteration-count: 20;
+    filter: drop-shadow(0 0 20px #fff);
+}
+
+.left0 {
+    width: 0;
+    height: 0;
+    border-right: 30px solid rgba(206,186,199,0.6);
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+}
+
+.right0 {
+    width: 0;
+    height: 0;
+    border-left: 30px solid rgba(206,186,199,0.6);
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+}
+
+.middle0 {
+    width: 60px;
+    height: 104px;
+    background-color: rgba(206,186,199,0.6);
+}
+
+.scene {
+    width: 120px;
+    height: 104px; 
+    perspective: 600px;
+    margin: 7px;
+}
+
+.setOneHexagon {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    transform-origin: center right;
+}
+#hex1.setOneHexagon {
+    transition-delay: 0.1s
+}
+#hex2.setOneHexagon {
+    transition-delay: 0.15s
+}
+#hex3.setOneHexagon{
+    transition-delay: 0.2s
+}
+#hex4.setOneHexagon{
+    transition-delay: 0.25s
+}
+#hex5.setOneHexagon{
+    transition-delay: 0.3s
+}
+#hex6.setOneHexagon{
+    transition-delay: 0.35s
+}
+#hex7.setOneHexagon{
+    transition-delay: 0.4s
+}
+
+.setOneHexagon.is-flipped {
+    transform: translateX(-100%) rotateY(180deg);
+}
+
+.newHexagon {
+    display: flex; /* will be switched to flex when called */
+    margin: 3px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1.5s;
+    transform-style: preserve-3d;
+}
+
+.newHexagon.is-flipped {
+    transform: translateX(0%) rotateY(180deg);
+}
+
+.face {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
+.face-front {
+    display: flex;
+}
+.face-back {
+    display: flex;
+    filter: drop-shadow(-15px 10px 15px rgb(57, 35, 59));
+    transform: rotateY(180deg);
+}
+
+/* each hexagon is made up of 3divs */
+.left-front {
+    width: 0;
+    height: 0;
+    border-right: 30px solid transparent;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+}
+.right-front {
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+}
+.middle-front {
+    width: 60px;
+    height: 104px;
+    background-color: transparent;
+}
+
+.left-back {
+    width: 0;
+    height: 0;
+    border-right: 30px solid rgba(206,186,199,0.6);
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+
+}
+.right-back {
+    width: 0;
+    height: 0;
+    border-left: 30px solid rgba(206,186,199,0.6);
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+
+}
+.middle-back {
+    width: 60px;
+    height: 104px;
+    background-color: rgba(206,186,199,0.6);
+}
+
+.flowerOne {
+    display: flex;
+    margin: 150px 0;
+}
+.flowerTwo {
+    display: flex;
+    margin-top: 210px;
+
+}
+
+.odd-col {
+    margin-top: 57px;
+    display: flex;
+    flex-direction: column;
+    margin-right: -25px;
+}
+.even-col {
+    display: flex;
+    flex-direction: column;
+    margin-right: -25px;
+}
+
+.flowers {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    filter: blur(3px);
+}
+
+.onScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 100px 0;
+    width:160px;
+    height: 80px;
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 30px #9ecaed;
+    font-family: 'Comfortaa', cursive;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.score {
+    margin: 6px;
+}
+.rnd {
+    margin: 6px;
+}
+
+.pauses {
+    font-family: 'Comfortaa', cursive;
+    position: absolute;
+    z-index: 1000;
+    text-align: center;
+    display: none;
+    color: #fff;
+    animation: slideInUp .7s ease-in;
+    font-size: 50px;
+    margin: -250px 0 0 0;
+    border: 2px solid white;
+}
+
+figure {
+display: hidden;
+}
+
+form{
+    font-family: 'Comfortaa', cursive;
+    margin: 10px auto;
+}
+input {
+    font-family: inherit;
+    font-size: 20px;
+}
+.name {
+    font-size: 25px;
+}
+
+.board {
+    margin: 40px 0 0 0;
+    width: 500px;
+    height: 280px;
+    background: rgba(13, 23, 116, 0.7);
+    box-shadow: 0 0 20px rgb(89, 238, 206);
+}
+.leaderboard {
+    font-size: 30px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.underline {
+    width: 300px;
+    height: 2px;
+    box-shadow: 0 0 15px rgb(89, 238, 206);
+    margin: 0 100px;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Used Keyframes */
+@keyframes fadeOutUp {
+from {
+    opacity: 1;
+}
+to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+}
+}
+
+@keyframes slideInUp {
+    from {
+      transform: translate3d(0, 100%, 0);
+      visibility: visible;
+    }
+  
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+@keyframes shake {
+from,
+to {
+    transform: translate3d(0, 0, 0);
+}
+10%,
+30%,
+50%,
+70%,
+90% {
+    transform: translate3d(-15px, 0, 0);
+}
+20%,
+40%,
+60%,
+80% {
+    transform: translate3d(15px, 0, 0);
+}
+}
+
+@keyframes flipInX {
+from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+}
+40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+}
+60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+}
+80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+}
+to {
+    transform: perspective(400px);
+}
+}
+
+@keyframes flip {
+from {
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+    rotate3d(0, 1, 0, -360deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+}
+40% {
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+    rotate3d(0, 1, 0, -190deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+    rotate3d(0, 1, 0, -190deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+}
+50% {
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+    rotate3d(0, 1, 0, -170deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+    rotate3d(0, 1, 0, -170deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+}
+80% {
+    -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
+    rotate3d(0, 1, 0, 0deg);
+    transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
+    rotate3d(0, 1, 0, 0deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+}
+to {
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+    rotate3d(0, 1, 0, 0deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+}
+}
+
+.leader-list {
+    padding: 18px 65px;
+}
+
+.high-score {
+    padding-left: 200px;
+}
+
+span {
+    text-decoration: underline
+}
+
