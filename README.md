@@ -11,7 +11,8 @@ Using JavaScript, I created various functions, manipulated the DOM and styleshee
 
 #### Snippet of playSequnce():
 The function was made recursive to make it dynamic.
-```let i = 0;
+```
+let i = 0;
 const playSequence = ()=>{
     game.playersTurn = false
     setTimeout(()=>{
@@ -42,7 +43,8 @@ const playSequence = ()=>{
         playSequence();
     }
     i++
-    },800)```
+    },800)
+  ```
 
 ### Game walkthrough:
 1. The user is greeted with the title screen, which includes a "Start" button
