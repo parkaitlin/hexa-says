@@ -44,8 +44,24 @@ body {
 
 h1 {
     font-size: 90px;
-    margin: 50px 0;
+    margin: 50px 0 0 0;
 }
+#final-score {
+    font-size: 50px;
+    text-align: center;
+    margin: 20px;
+}
+#input-score {
+    display: none;
+}
+li > p {
+    display: flex;
+    justify-content: space-between;
+}
+li {
+    margin-bottom: 5px;
+}
+
 
 #winner {
     font-size: 90px;
@@ -327,7 +343,7 @@ input {
     width: 300px;
     height: 2px;
     box-shadow: 0 0 15px rgb(89, 238, 206);
-    margin: 0 100px;
+    margin: 0 100px 15px 100px;
 }
 
 ul {
@@ -440,14 +456,17 @@ to {
 }
 
 .leader-list {
-    padding: 18px 65px;
+    padding: 0 125px 0 65px;
+    height: 170px;
+    overflow-y: scroll;
 }
 
 .high-score {
-    padding-left: 200px;
+    padding-left: 120px;
 }
 
-span {
-    text-decoration: underline
+.board > span {
+    text-decoration: underline;
+    margin-left: 65px;
 }
 

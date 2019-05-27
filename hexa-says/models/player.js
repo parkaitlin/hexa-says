@@ -5,4 +5,4 @@ const playerSchema = new mongoose.Schema({
     score: {type: Number, required: true}
 })
 
-module.exports = mongoose.model(Player, playerSchema)
+module.exports = mongoose.model("Player", playerSchema)

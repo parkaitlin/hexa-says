@@ -31,8 +31,10 @@
 
         <div class="second-overlay">
             <h1>Game Over</h1>
-            <form class="gameOver">
-                <input type="text" id="name" placeholder="name for the">  
+                <h2 id="final-score"></h2>
+            <form class="gameOver" action="/new" method="POST">
+                <input type="text" id="name" name="name" placeholder="name for the"/>  
+                <input type="text" id="input-score" name="score"/>
                 <button type="submit" class="name">leaderboard</button>
             </form>
             <form>
@@ -41,10 +43,13 @@
             <div class='board'>
                 <h4 class="leaderboard">leaderboard</h4>
                 <div class="underline"></div>
+                <span><i class="fas fa-crown"></i>Name</span><span class="high-score">High Score</span></li>
                 <div class="leader-list">    
-                    <span><i class="fas fa-crown"></i>Name</span><span class="high-score">High Score</span></li>
                     <ol>
+                    <%for(let i = 0; i < leaderboard.length; i++){%>
+                        <li><p><span><%=leaderboard[i].name%></span><span class='high-scores'><%=leaderboard[i].score%></span></p></li>
                         <!-- <li id='firstPlace'></li> -->
+                    <%}%>
                     </ol>
                 </div>
         </div>

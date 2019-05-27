@@ -59,13 +59,14 @@ const playerTurn = ()=>{
 }
 
 const checkForMatch = ()=>{
-    console.log(game.player.array)
     const i = game.player.array.length - 1
     if(game.player.array[i] !== game.hexArray[i]){
         game.startGame = false;
         game.playersTurn = false;
         game.hexArray = []
         document.querySelector('.flowers').style.animation="shake 1s ease-in"
+        document.querySelector('#final-score').innerText=game.player.score
+        document.querySelector('#input-score').value=game.player.score
         setTimeout(()=>{
             audio.pause();
             document.querySelector('.second-overlay').style.display="flex"
@@ -126,7 +127,6 @@ const startNextRound = ()=>{
     for(let i = 1; i < 2; i++){
         let randomNum = Math.floor(Math.random()* game.platform.length + 1);
         game.hexArray.push(`hex${randomNum}`);
-        console.log(game.hexArray);
     }
     setTimeout(()=>{
         playSequence();
@@ -159,7 +159,6 @@ const game = {
 
 //Event Listeners
 document.querySelector('.flowers').addEventListener('click', (e)=>{
-    console.log(e.target)
     if(e.target.id !== '' && game.playersTurn === true){
         game.player.array.push(e.target.id); 
         document.querySelector(`#${e.target.id}`).lastElementChild.childNodes[1].style.borderRight='30px solid rgba(206,186,199,1)'
@@ -185,12 +184,7 @@ document.querySelector('.start').addEventListener('click', ()=>{
     }, 1800)
 })
 
-document.querySelector('.gameOver').addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const name = document.querySelector('#name').value;
-    console.log(document.querySelector('#name').value);
-    const newLi = document.createElement('li');
-    newLi.innerText=`${name} __ ${game.player.score}`;
-    document.querySelector('#orderList').appendChild(newLi);
-})
+// document.querySelector('.gameOver').addEventListener('submit', (e)=>{
+
+// })
 
