@@ -73,7 +73,7 @@ const playSequence = ()=>{
 I hoped to take a simple game and make it a bit more fun, challenging, but also asthetically pleasing. 
 
 I hope you enjoy this little brain teaser!
-## [Hex-says](https://hexa-says.herokuapp.com/)
+## [Hexa-says](https://hexa-says.herokuapp.com/)
 
 #### Future Improvements:
 1. leaderboard to save previous players
