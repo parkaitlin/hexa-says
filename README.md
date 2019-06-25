@@ -1,9 +1,9 @@
-# Hexa-says
+# Hexa-Says
 
 ### Wireframe
 <img src="wireframe.png">
 
-Hex-says is an unique version of the classic game, Simon Says. The rules to Simon Says are simple: a sequence will be played and the user will need to play the exact same sequence in order to move on.
+Hexa-Says is a unique version of the classic game, Simon Says. The rules to Simon Says are simple: a sequence will be played and the user will need to play the exact same sequence in order to move on.
 
 Hex-says has the same rules, but the sequence can include up to 14 different selections. The game starts with 7 possible selections and 1 is added on after each round is passed. Similar concept, the first round has a sequence of 3 selections and then one more is added to that sequence each time.
 
