@@ -70,7 +70,7 @@ const playSequence = ()=>{
 - Mongo
 - Mongoose
 
-I hoped to take a simple game and make it a bit more fun, challenging, but also asthetically pleasing. 
+I hoped to take a simple game and make it a bit more fun, challenging, but also aesthetically pleasing. 
 
 I hope you enjoy this little brain teaser!
 ## [Hexa-says](https://hexa-says.herokuapp.com/)
